@@ -1,0 +1,37 @@
+<h2><%= @application.applicant.name%>'s Application </h2>
+
+<h3>Status: <%= @application.status %></h3>
+
+<% @application.pets.each do |pet| %>
+    <section id="pet-<%= pet.id %>">
+        <%= pet.name %>
+        <%= pet.image %>
+
+        <% @adoption = Adoption.where(pet_id: pet.id, application_id: @application.id)%>
+        <% if pet.adoptable? == true %>
+
+            <% if @adoption[0].status == nil %>
+                <%= button_to 'Approve', "/adoptions/#{@adoption[0].id}", method: :patch, params:{status: true} %>
+                <%= button_to 'Reject', "/adoptions/#{@adoption[0].id}", method: :patch, params:{status: false} %>
+            <% end %>
+            
+            <% if @adoption[0].status == true %>
+                Approved
+            <% end %>  
+            
+            <% if @adoption[0].status == false %>
+                Rejected
+            <% end %>  
+        
+        <% else %> <br />
+            <% if @adoption[0].status == nil %>
+                <%= "This pet has been approved for adoption" %>
+                <%= button_to 'Reject', "/adoptions/#{@adoption[0].id}", method: :patch, params:{status: false} %>
+            <% else %>
+                <%= "This pet has been approved for adoption" %>
+            <% end %>  
+        <% end %>  
+
+    </section> <br />
+
+<% end %>

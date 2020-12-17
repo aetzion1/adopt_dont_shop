@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/", to: "welcome#index"
 
-  get "/shelters", to: "shelters#index"
-  get "/shelters/new", to: "shelters#new"
-  get "/shelters/:id", to: "shelters#show"
-  delete "/shelters/:id", to: "shelters#destroy"
-  post "/shelters", to: "shelters#create"
-  get "/shelters/:id/edit", to: "shelters#edit"
-  patch "/shelters/:id", to: "shelters#update"
+  resources :shelter
+
+  # get "/shelters", to: "shelters#index"
+  # get "/shelters/new", to: "shelters#new"
+  # get "/shelters/:id", to: "shelters#show"
+  # delete "/shelters/:id", to: "shelters#destroy"
+  # post "/shelters", to: "shelters#create"
+  # get "/shelters/:id/edit", to: "shelters#edit"
+  # patch "/shelters/:id", to: "shelters#update"
 
   get "/pets", to: "pets#index"
   get "/pets/:id", to: "pets#show"
@@ -33,8 +35,9 @@ Rails.application.routes.draw do
   patch "/applications/:id", to: "applications#update"
 
   post "/adoptions", to: "adoptions#create"
+  patch "/adoptions/:id", to: "adoptions#update"
 
-  get 'admin/applications'
+  get 'admin/applications', to: "admin/applications#index"
   get 'admin/applications/:id', to: "admin/applications#show"
   patch 'admin/applications/:id', to: "admin/applications#update"
   

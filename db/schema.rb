@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_213105) do
+ActiveRecord::Schema.define(version: 2020_12_17_012023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adoptions", force: :cascade do |t|
+    t.bigint "application_id"
+    t.bigint "pet_id"
+    t.boolean "status"
+    t.index ["application_id"], name: "index_adoptions_on_application_id"
+    t.index ["pet_id"], name: "index_adoptions_on_pet_id"
+  end
 
   create_table "applicants", force: :cascade do |t|
     t.string "name"
@@ -23,13 +31,6 @@ ActiveRecord::Schema.define(version: 2020_12_12_213105) do
     t.bigint "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "adoptions", force: :cascade do |t|
-    t.bigint "application_id"
-    t.bigint "pet_id"
-    t.index ["application_id"], name: "index_adoptions_on_application_id"
-    t.index ["pet_id"], name: "index_adoptions_on_pet_id"
   end
 
   create_table "applications", force: :cascade do |t|
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_213105) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.string "image"  
+    t.string "image"
     t.string "name"
     t.integer "approximate_age"
     t.bigint "shelter_id"

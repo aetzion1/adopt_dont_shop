@@ -2,6 +2,7 @@
 
 <section id= "new-application">
 <%= form_with url:'/applicants', local: true do |form| %>
+<%# <%= form_with Applicant, local: true do |form| %>
   <%= form.label :name%>
   <%= form.text_field :name %><br>
   <%= form.label :address %>

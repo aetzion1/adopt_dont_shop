@@ -7,7 +7,6 @@ class Pet < ApplicationRecord
     if search
       pet = Pet.where("LOWER(name) LIKE ?", "%#{search.downcase}%")
       # pet = Pet.find_by(name: search.titlecase)
-      require 'pry'; binding.pry
       if pet
         pet
       else

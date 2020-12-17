@@ -10,61 +10,63 @@ RSpec.describe 'Pets index page' do
     @pet3 = @shelter1.pets.create!(image:"", name: "Zeus", description: "dog", approximate_age: 4, sex: "male")
   end
 
-  it "displays each pet in the system with attributes" do
+  describe "As a visitor, when I visit /pets" do
+    it "displays each pet in the system with attributes" do
 
-    visit "/pets"
+      visit "/pets"
 
-    expect(page).to have_content(@pet1.image)
-    expect(page).to have_content(@pet1.name)
-    expect(page).to have_content(@pet1.approximate_age)
-    expect(page).to have_content(@pet1.sex)
-    expect(page).to have_content(@shelter1.name)
+      expect(page).to have_content(@pet1.image)
+      expect(page).to have_content(@pet1.name)
+      expect(page).to have_content(@pet1.approximate_age)
+      expect(page).to have_content(@pet1.sex)
+      expect(page).to have_content(@shelter1.name)
 
-    expect(page).to have_content(@pet2.image)
-    expect(page).to have_content(@pet2.name)
-    expect(page).to have_content(@pet2.approximate_age)
-    expect(page).to have_content(@pet2.sex)
-    expect(page).to have_content(@shelter2.name)
+      expect(page).to have_content(@pet2.image)
+      expect(page).to have_content(@pet2.name)
+      expect(page).to have_content(@pet2.approximate_age)
+      expect(page).to have_content(@pet2.sex)
+      expect(page).to have_content(@shelter2.name)
 
-    expect(page).to_not have_content(@shelter3.name)
-  end
-
-  it "can delete a pet from pet index page" do
-    visit "/pets"
-
-    within "#pet-#{@pet1.id}" do
-      expect(page).to have_content("Thor")
-      click_link "Delete Pet"
+      expect(page).to_not have_content(@shelter3.name)
     end
 
-    expect(current_path).to eq("/pets")
-    expect(page).to_not have_content("Thor")
-  end
+    it "can delete a pet from pet index page" do
+      visit "/pets"
 
-  it "can edit a pet from pets index page" do
-    visit '/pets'
+      within "#pet-#{@pet1.id}" do
+        expect(page).to have_content("Thor")
+        click_link "Delete Pet"
+      end
 
-    within "#pet-#{@pet1.id}" do
-      expect(page).to have_content("Thor")
-      click_link "Update Pet"
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content("Thor")
     end
 
-    fill_in "name", with: "Calvin"
+    it "can edit a pet from pets index page" do
+      visit '/pets'
 
-    click_button "Update Pet"
+      within "#pet-#{@pet1.id}" do
+        expect(page).to have_content("Thor")
+        click_link "Update Pet"
+      end
 
-    expect(current_path).to eq("/pets/#{@pet1.id}")
+      fill_in "name", with: "Calvin"
 
-    expect(page).to have_content("Calvin")
-    expect(page).to_not have_content("Thor")
-  end
+      click_button "Update Pet"
 
-  it "Has start an application link that redirects to new applciation page" do 
-    visit '/pets'
+      expect(current_path).to eq("/pets/#{@pet1.id}")
 
-    click_link "Start an Application"
-    
-    expect(current_path).to eq('/applications/new')
+      expect(page).to have_content("Calvin")
+      expect(page).to_not have_content("Thor")
+    end
+
+    it "Has start an application link that redirects to new applciation page" do 
+      visit '/pets'
+
+      click_link "Start an Application"
+      
+      expect(current_path).to eq('/applications/new')
+    end
   end
   
 end

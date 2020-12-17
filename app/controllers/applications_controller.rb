@@ -19,7 +19,6 @@ class ApplicationsController < ApplicationController
     def update
         @application = Application.find(params[:id])
         @application.update(application_params)
-        require 'pry'; binding.pry
         redirect_to "/applications/#{params[:id]}"
     end
 

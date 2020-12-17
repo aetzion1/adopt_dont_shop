@@ -5,7 +5,6 @@ class ApplicantsController < ApplicationController
         if @applicant.save
             @applicant.applications.create!
             @application = Application.last
-            # require 'pry'; binding.pry
             redirect_to "/applications/#{@application.id}"
         else
             flash.now[:error] = @applicant.errors.full_messages

@@ -1,13 +1,16 @@
 <h2><%= @application.applicant.name %></h2>
 
+<section id='app-info'>
 <h4>Status: <%= @application.status %>
+    <section id="submit">
     <% if @chosen_ones.count >= 1 && @application.status == "In Progress" %>
-        <%= form_with url: "/applications/#{@application.id}", method: :patch do |form| %>
+        <%= form_with url: "/applications/#{@application.id}", local: true, method: :patch do |form| %>
             <%= form.label :description %>
             <%= form.text_field :description %>
             <%= form.hidden_field :status, value: "Pending" %>
         <%= form.submit ("Submit") %>
     <% end %>
+    </section>
 <% end %></h4>
 
 <p>Address:<br/>
@@ -26,12 +29,14 @@
         </section>
     <% end %>
 <p>
+</section>
 
+<section id='add-a-pet'>
 <% if @application.status == "In Progress" %>
-    <section id='add-a-pet'>
         <h4>Add a Pet!</h4>
         
         <%= form_tag "/applications/#{@application.id}", method: :get do %>
+            <%= label_tag :search %>
             <%= text_field_tag :search, params[:search] %>
             <%= submit_tag ("Search") %>
         <% end %>
@@ -45,5 +50,5 @@
             </ul>
             </section>
         <% end %></p>
-    </section>
 <% end %>
+</section>
