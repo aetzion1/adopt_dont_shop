@@ -19,32 +19,32 @@ dans.pets.create!(name: 'Buck',
     approximate_age: 2,
     description: "big and black, loves peanut butter, hates mailmen", 
     adoptable: true,
-    sex: male)
+    sex: 1)
 dans.pets.create!(name: 'Princess',
     approximate_age: 5,
     description: "130 pound fluffball", 
     adoptable: true,
-    sex: female)
+    sex: 0)
 kathys.pets.create!(name: 'Max',
     approximate_age: 1,
     description: "can howl like an old blues singer", 
     adoptable: true,
-    sex: male)
+    sex: 1)
 kathys.pets.create!(name: 'Lill',
     approximate_age: 1,
     description: "loves to eat furniture", 
     adoptable: true,
-    sex: female)
+    sex: 0)
 stinkys.pets.create!(name: 'Cruela',
     approximate_age: 9,
     description: "blind, deaf, and toothless - with a heart of gold", 
     adoptable: true,
-    sex: female)
+    sex: 0)
 stinkys.pets.create!(name: 'Chester',
     approximate_age: 7,
     description: "SQUIRREL!!!", 
     adoptable: true,
-    sex: male)
+    sex: 1)
 
 adam = Applicant.create!(name: "Adam Cohen", address: "1c Lola Road", city: "Miami", state: "FL", zip: 33434)
 georgia = Applicant.create!(name: "Georgia Arthur", address: "10 Pelican Drive", city: "Philadelphia", state: "PA", zip: 22243)
