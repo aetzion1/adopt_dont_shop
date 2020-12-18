@@ -88,7 +88,7 @@ RSpec.describe "Admin Shelters Index" do
             
             expect(page.all("#pending")[2]).to have_content(@stinkys.name)
             expect(page.all("#pending")[1]).to have_content(@kathys.name)
-
+            # CHECK ALL LINKS
         end
     end
 end

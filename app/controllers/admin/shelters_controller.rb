@@ -8,6 +8,7 @@ class Admin::SheltersController < ApplicationController
     def show
         @shelter = Shelter.find_by(params[:id])
         # @shelter = Shelter.find(params[:id])
+        @action_req = @shelter[0].pets.action_required
     end
 
 end
