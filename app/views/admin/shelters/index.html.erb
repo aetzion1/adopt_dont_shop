@@ -9,3 +9,18 @@
     <%= shelter.zip %>
   </section>
 <% end %>
+
+<h2> Shelters with Pending Applications" </h2>
+<% @shelters2.each do |shelter| %>
+<section id="pending">
+  <% if shelter.pending_apps?%>
+    <h2><%= link_to "#{shelter.name}", "shelters/#{shelter.id}" %></h2>
+    <%= shelter.address %><br />
+    <%= shelter.city %>
+    <%= shelter.state %>
+    <%= shelter.zip %>
+    <% end %>
+</section>
+<% end %>
+
+

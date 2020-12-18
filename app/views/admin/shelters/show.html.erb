@@ -4,3 +4,16 @@
 <%= @shelter[0].city %>
 <%= @shelter[0].state %>
 <%= @shelter[0].zip %>
+
+<section id="statistics">
+    <h3>Statistics</h3>
+    Avg Age: <%= @shelter[0].pets.avg_age%><br />
+    Adoptable pets: <%= @shelter[0].pets.adoptable_count%><br />
+    Adpted Pets: <%= @shelter[0].pets.adopted_count%>
+</section>
+
+<section id="action-req">
+    <h3>Action Required</h3>
+    <%= @shelter[0].pets.action_required%><br />
+
+</section>

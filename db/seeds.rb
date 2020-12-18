@@ -11,50 +11,41 @@ Pet.destroy_all
 Shelter.destroy_all
 Applicant.destroy_all
 
-shelter1 = Shelter.create!(
-    name:'Hals Happy Home for Hounds',
-    address: '4 Paws Place',
-    city: 'Dogtown',
-    state: 'CA',
-    zip: 90405,
-)
+dans = Shelter.create!(name: "Dan's Doghouse", address: "123 Hellhound St", city: "Dogtown", state: "CA", zip: 66666)
+kathys = Shelter.create!(name: "Kathy's Kathouse", address: "1 Rodeo Drive", city: "Beverly Hills", state: "CA", zip: 90210)
+stinkys = Shelter.create!(name: "Ms. Stinky's", address: "165 12th St", city: "Boston", state: "MA", zip: 87655)
 
-shelter2 = Shelter.create!(
-    name:'Kathies Kathouse',
-    address: '123  Rodeo Drive',
-    city: 'Beverly Hills',
-    state: 'CA',
-    zip: 90210,
-)
+dans.pets.create!(name: 'Buck',
+    approximate_age: 2,
+    description: "big and black, loves peanut butter, hates mailmen", 
+    adoptable: true,
+    sex: male)
+dans.pets.create!(name: 'Princess',
+    approximate_age: 5,
+    description: "130 pound fluffball", 
+    adoptable: true,
+    sex: female)
+kathys.pets.create!(name: 'Max',
+    approximate_age: 1,
+    description: "can howl like an old blues singer", 
+    adoptable: true,
+    sex: male)
+kathys.pets.create!(name: 'Lill',
+    approximate_age: 1,
+    description: "loves to eat furniture", 
+    adoptable: true,
+    sex: female)
+stinkys.pets.create!(name: 'Cruela',
+    approximate_age: 9,
+    description: "blind, deaf, and toothless - with a heart of gold", 
+    adoptable: true,
+    sex: female)
+stinkys.pets.create!(name: 'Chester',
+    approximate_age: 7,
+    description: "SQUIRREL!!!", 
+    adoptable: true,
+    sex: male)
 
-# shelter1.pets.create!(name: 'Buck',
-#     approximate_age:    t.string "image"
-#     t.string "name"
-#     t.integer "approximate_age"
-#     t.bigint "shelter_id"
-#     t.string "description"
-#     t.boolean "adoptable", default: true
-#     t.integer "sex"
-
-Shelter.all.each do |shelter|
-    rand(3..5).times do
-        FactoryBot.create(:pet, shelter: shelter)
-    end
-end
-
-# FactoryBot.create_list(:applicant, rand(2..5))
-
-# Applicant.all.each do |applicant|
-#     FactoryBot.create(:application, applicant: applicant)
-# end
-
-# Application.all.each do |application|
-#     pet = Pet.all.sample
-#     Adoption.create!(pet: pet, application: application)
-# end
-
-# Pet.all.each do |pet|
-#     application = Application.all.sample
-#     Adoption.create!(pet: pet, application: application)
-#     # pets = Pet.limit(2).order("RANDOM()")
-# end
+adam = Applicant.create!(name: "Adam Cohen", address: "1c Lola Road", city: "Miami", state: "FL", zip: 33434)
+georgia = Applicant.create!(name: "Georgia Arthur", address: "10 Pelican Drive", city: "Philadelphia", state: "PA", zip: 22243)
+linzi = Applicant.create!(name: "Linzi Hurwitz", address: "333 N Federal Hwy", city: "Boca Raton", state: "FL", zip: 33432)

@@ -8,18 +8,10 @@ class Application < ApplicationRecord
 
     def all_approved
         adoptions.where(status: true).count == self.adoptions.count
-        #     true
-        # else
-        #     false
-        # end
     end
 
     def not_all_approved
         adoptions.where(status: false).count >= 1
-            # true
-        # else
-        #     false
-        # end
     end
 
 end

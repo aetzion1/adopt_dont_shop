@@ -11,7 +11,7 @@ RSpec.describe "the Application show page" do
       end
     describe "As a visitor, when I visit /applications/:id" do
       it "should display Application info" do
-          visit "/applications/#{@applicant1.id}"
+          visit "/applications/#{@application1.id}"
 
           expect(page).to have_content(@applicant1.name)
           expect(page).to have_content(@applicant1.address)
@@ -25,7 +25,7 @@ RSpec.describe "the Application show page" do
       end
 
       it "should allow you to search for and click on a pet" do 
-        visit "/applications/#{@applicant1.id}"
+        visit "/applications/#{@application1.id}"
 
         within("#add-a-pet") do
           expect(page).to have_content("Add a Pet!")
@@ -50,7 +50,7 @@ RSpec.describe "the Application show page" do
       end
 
       it "should allow you to adopt a pet and submit an application" do
-        visit "/applications/#{@applicant1.id}"
+        visit "/applications/#{@application1.id}"
         
         within("#pet-#{@pet1.id}") do
             expect(page).to have_button('Adopt me!')
