@@ -5,4 +5,8 @@ class Shelter < ApplicationRecord
     find_by_sql("SELECT * FROM shelters ORDER BY shelters.name desc")
     # order(name: :desc)
   end
+
+  def self.find_by(id)
+    find_by_sql("SELECT * FROM shelters WHERE shelters.id = #{id}")
+  end
 end
