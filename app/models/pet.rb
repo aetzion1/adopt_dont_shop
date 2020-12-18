@@ -17,6 +17,11 @@ class Pet < ApplicationRecord
     end
   end
 
+  def self.pending_apps
+    select("DISTINCT ON (pets.name) pets.name, applications.id as app_id")
+    .joins(adoptions: [:application])
+  end
+
   validates_presence_of :name, :description, :approximate_age, :sex
   # ^ AR method to validate presence of column
   # note image and adopable is not validated

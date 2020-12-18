@@ -9,4 +9,9 @@ class Shelter < ApplicationRecord
   def self.find_by(id)
     find_by_sql("SELECT * FROM shelters WHERE shelters.id = #{id}")
   end
+
+  def pending_apps?
+    !pets.pending_apps.empty?
+  end
+
 end
