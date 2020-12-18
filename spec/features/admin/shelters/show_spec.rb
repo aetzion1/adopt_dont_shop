@@ -54,7 +54,7 @@ RSpec.describe "Admin Shelters Show Page" do
     describe "As a visitor, I visit admin/shelters/:id" do
         it "displays the shelter's name and full address and avg pet age" do
             visit "admin/shelters/#{@dans.id}"
-            save_and_open_page
+
             expect(page).to have_content(@dans.name)
             expect(page).to have_content(@dans.address)
             expect(page).to have_content(@dans.state)
