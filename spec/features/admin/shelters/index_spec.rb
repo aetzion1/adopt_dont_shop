@@ -21,7 +21,7 @@ RSpec.describe "Admin Shelters Index" do
             description: "can howl like an old blues singer", 
             adoptable: true,
             sex: 0)
-        @kathys.pets.create!(name: 'Lill',
+        @lil = @kathys.pets.create!(name: 'Lill',
             approximate_age: 1,
             description: "loves to eat furniture", 
             adoptable: true,
@@ -46,6 +46,7 @@ RSpec.describe "Admin Shelters Index" do
         @linzi.applications.create!(description: "I don't like my furniture")
 
         Adoption.create!(pet: @chester, application: @adam.applications.first)
+        Adoption.create!(pet: @lil, application: @georgia.applications.first)
 
         # Application.all.each do |application|
         #     pet = Pet.all.sample
@@ -85,7 +86,8 @@ RSpec.describe "Admin Shelters Index" do
             visit '/admin/shelters'
             save_and_open_page
             
-            expect(page.all("#pending")[0]).to have_content(@stinkys.name)
+            expect(page.all("#pending")[2]).to have_content(@stinkys.name)
+            expect(page.all("#pending")[1]).to have_content(@kathys.name)
 
         end
     end

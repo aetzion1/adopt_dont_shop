@@ -2,6 +2,7 @@ class Admin::SheltersController < ApplicationController
 
     def index
         @shelters = Shelter.sort_by_name_desc
+        @shelters2 = Shelter.sort_by_name_asc
     end
 
     def show
