@@ -11,10 +11,6 @@ class ApplicationsController < ApplicationController
         # #     pet_app = PetApplication.create!()
         # # end
     end
-
-    def edit
-        @application = Application.find(params[:id])
-    end
     
     def update
         @application = Application.find(params[:id])
